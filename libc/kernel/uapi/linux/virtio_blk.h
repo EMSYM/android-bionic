@@ -22,19 +22,24 @@
 #include <linux/virtio_ids.h>
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #include <linux/virtio_config.h>
-#define VIRTIO_BLK_F_BARRIER 0
+#include <linux/virtio_types.h>
 #define VIRTIO_BLK_F_SIZE_MAX 1
 #define VIRTIO_BLK_F_SEG_MAX 2
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define VIRTIO_BLK_F_GEOMETRY 4
 #define VIRTIO_BLK_F_RO 5
 #define VIRTIO_BLK_F_BLK_SIZE 6
+#define VIRTIO_BLK_F_TOPOLOGY 10
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define VIRTIO_BLK_F_MQ 12
+#ifndef VIRTIO_BLK_NO_LEGACY
+#define VIRTIO_BLK_F_BARRIER 0
 #define VIRTIO_BLK_F_SCSI 7
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define VIRTIO_BLK_F_WCE 9
-#define VIRTIO_BLK_F_TOPOLOGY 10
 #define VIRTIO_BLK_F_CONFIG_WCE 11
 #define VIRTIO_BLK_F_FLUSH VIRTIO_BLK_F_WCE
+#endif
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define VIRTIO_BLK_ID_BYTES 20
 struct virtio_blk_config {
@@ -56,28 +61,38 @@ struct virtio_blk_config {
   __u32 opt_io_size;
   __u8 wce;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  __u8 unused;
+  __u16 num_queues;
 } __attribute__((packed));
 #define VIRTIO_BLK_T_IN 0
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define VIRTIO_BLK_T_OUT 1
+#ifndef VIRTIO_BLK_NO_LEGACY
 #define VIRTIO_BLK_T_SCSI_CMD 2
+#endif
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define VIRTIO_BLK_T_FLUSH 4
 #define VIRTIO_BLK_T_GET_ID 8
+#ifndef VIRTIO_BLK_NO_LEGACY
 #define VIRTIO_BLK_T_BARRIER 0x80000000
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#endif
 struct virtio_blk_outhdr {
+  __virtio32 type;
+  __virtio32 ioprio;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-  __u32 type;
-  __u32 ioprio;
-  __u64 sector;
+  __virtio64 sector;
 };
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#ifndef VIRTIO_BLK_NO_LEGACY
 struct virtio_scsi_inhdr {
-  __u32 errors;
-  __u32 data_len;
-  __u32 sense_len;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-  __u32 residual;
+  __virtio32 errors;
+  __virtio32 data_len;
+  __virtio32 sense_len;
+  __virtio32 residual;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 };
+#endif
 #define VIRTIO_BLK_S_OK 0
 #define VIRTIO_BLK_S_IOERR 1
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */

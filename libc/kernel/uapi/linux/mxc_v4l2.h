@@ -39,5 +39,13 @@ struct v4l2_mxc_offset {
   uint32_t u_offset;
   uint32_t v_offset;
 };
-#endif
+struct v4l2_mxc_dest_crop {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  __u32 type;
+  struct v4l2_mxc_offset offset;
+};
+#define VIDIOC_S_INPUT_CROP _IOWR('V', BASE_VIDIOC_PRIVATE + 1, struct v4l2_crop)
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define VIDIOC_G_INPUT_CROP _IOWR('V', BASE_VIDIOC_PRIVATE + 2, struct v4l2_crop)
+#define VIDIOC_S_DEST_CROP _IOWR('V', BASE_VIDIOC_PRIVATE + 3, struct v4l2_mxc_dest_crop)
+#endif

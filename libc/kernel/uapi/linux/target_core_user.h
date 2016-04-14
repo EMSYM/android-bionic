@@ -21,40 +21,50 @@
 #include <linux/types.h>
 #include <linux/uio.h>
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
-#define TCMU_VERSION "1.0"
-#define TCMU_MAILBOX_VERSION 1
+#define TCMU_VERSION "2.0"
+#define TCMU_MAILBOX_VERSION 2
 #define ALIGN_SIZE 64
-struct tcmu_mailbox {
+#define xstr(s) str(s)
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define str(s) #s
+struct tcmu_mailbox {
   __u16 version;
   __u16 flags;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u32 cmdr_off;
   __u32 cmdr_size;
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u32 cmd_head;
   __u32 cmd_tail __attribute__((__aligned__(ALIGN_SIZE)));
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 } __packed;
 enum tcmu_opcode {
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   TCMU_OP_PAD = 0,
   TCMU_OP_CMD,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 };
 struct tcmu_cmd_entry_hdr {
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   __u32 len_op;
+  __u16 cmd_id;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  __u8 kflags;
+#define TCMU_UFLAG_UNKNOWN_OP 0x1
+  __u8 uflags;
 } __packed;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define TCMU_OP_MASK 0x7
 #define TCMU_SENSE_BUFFERSIZE 96
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 struct tcmu_cmd_entry {
   struct tcmu_cmd_entry_hdr hdr;
-  uint16_t cmd_id;
-  uint16_t __pad1;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   union {
     struct {
+      uint32_t iov_cnt;
+      uint32_t iov_bidi_cnt;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+      uint32_t iov_dif_cnt;
       uint64_t cdb_off;
-      uint64_t iov_cnt;
+      uint64_t __pad1;
+      uint64_t __pad2;
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
       struct iovec iov[0];
     } req;

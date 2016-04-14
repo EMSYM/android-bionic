@@ -84,18 +84,30 @@
 #define DRM_FORMAT_NV61 fourcc_code('N', 'V', '6', '1')
 #define DRM_FORMAT_NV24 fourcc_code('N', 'V', '2', '4')
 #define DRM_FORMAT_NV42 fourcc_code('N', 'V', '4', '2')
-#define DRM_FORMAT_NV12MT fourcc_code('T', 'M', '1', '2')
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define DRM_FORMAT_YUV410 fourcc_code('Y', 'U', 'V', '9')
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define DRM_FORMAT_YVU410 fourcc_code('Y', 'V', 'U', '9')
 #define DRM_FORMAT_YUV411 fourcc_code('Y', 'U', '1', '1')
 #define DRM_FORMAT_YVU411 fourcc_code('Y', 'V', '1', '1')
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define DRM_FORMAT_YUV420 fourcc_code('Y', 'U', '1', '2')
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define DRM_FORMAT_YVU420 fourcc_code('Y', 'V', '1', '2')
 #define DRM_FORMAT_YUV422 fourcc_code('Y', 'U', '1', '6')
 #define DRM_FORMAT_YVU422 fourcc_code('Y', 'V', '1', '6')
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define DRM_FORMAT_YUV444 fourcc_code('Y', 'U', '2', '4')
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 #define DRM_FORMAT_YVU444 fourcc_code('Y', 'V', '2', '4')
+#define DRM_FORMAT_MOD_NONE 0
+#define DRM_FORMAT_MOD_VENDOR_INTEL 0x01
+#define DRM_FORMAT_MOD_VENDOR_AMD 0x02
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define DRM_FORMAT_MOD_VENDOR_NV 0x03
+#define DRM_FORMAT_MOD_VENDOR_SAMSUNG 0x04
+#define DRM_FORMAT_MOD_VENDOR_QCOM 0x05
+#define fourcc_mod_code(vendor,val) ((((u64) DRM_FORMAT_MOD_VENDOR_ ##vendor) << 56) | (val & 0x00ffffffffffffffULL))
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define I915_FORMAT_MOD_X_TILED fourcc_mod_code(INTEL, 1)
+#define I915_FORMAT_MOD_Y_TILED fourcc_mod_code(INTEL, 2)
+#define I915_FORMAT_MOD_Yf_TILED fourcc_mod_code(INTEL, 3)
 #endif
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */

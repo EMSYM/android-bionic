@@ -79,46 +79,88 @@ enum bpf_cmd {
 };
 enum bpf_map_type {
   BPF_MAP_TYPE_UNSPEC,
-};
+  BPF_MAP_TYPE_HASH,
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  BPF_MAP_TYPE_ARRAY,
+};
 enum bpf_prog_type {
   BPF_PROG_TYPE_UNSPEC,
-};
-union bpf_attr {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  BPF_PROG_TYPE_SOCKET_FILTER,
+  BPF_PROG_TYPE_KPROBE,
+  BPF_PROG_TYPE_SCHED_CLS,
+  BPF_PROG_TYPE_SCHED_ACT,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+};
+#define BPF_PSEUDO_MAP_FD 1
+#define BPF_ANY 0
+#define BPF_NOEXIST 1
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+#define BPF_EXIST 2
+union bpf_attr {
   struct {
     __u32 map_type;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
     __u32 key_size;
     __u32 value_size;
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
     __u32 max_entries;
   };
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   struct {
     __u32 map_fd;
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
     __aligned_u64 key;
     union {
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
       __aligned_u64 value;
       __aligned_u64 next_key;
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
     };
+    __u64 flags;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
   };
   struct {
     __u32 prog_type;
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
     __u32 insn_cnt;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
     __aligned_u64 insns;
     __aligned_u64 license;
     __u32 log_level;
-/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
     __u32 log_size;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
     __aligned_u64 log_buf;
+    __u32 kern_version;
   };
 } __attribute__((aligned(8)));
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
 enum bpf_func_id {
   BPF_FUNC_unspec,
+  BPF_FUNC_map_lookup_elem,
+  BPF_FUNC_map_update_elem,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  BPF_FUNC_map_delete_elem,
+  BPF_FUNC_probe_read,
+  BPF_FUNC_ktime_get_ns,
+  BPF_FUNC_trace_printk,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  BPF_FUNC_get_prandom_u32,
+  BPF_FUNC_get_smp_processor_id,
+  BPF_FUNC_skb_store_bytes,
+  BPF_FUNC_l3_csum_replace,
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  BPF_FUNC_l4_csum_replace,
   __BPF_FUNC_MAX_ID,
 };
+struct __sk_buff {
 /* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  __u32 len;
+  __u32 pkt_type;
+  __u32 mark;
+  __u32 queue_mapping;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  __u32 protocol;
+  __u32 vlan_present;
+  __u32 vlan_tci;
+  __u32 vlan_proto;
+/* WARNING: DO NOT EDIT, AUTO-GENERATED CODE - SEE TOP FOR INSTRUCTIONS */
+  __u32 priority;
+};
 #endif
